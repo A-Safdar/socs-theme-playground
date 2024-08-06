@@ -1,0 +1,113 @@
+{
+  "template": "app",
+  "imports": {
+    "Volo.Abp.TextTemplateManagement": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Chat": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.LanguageManagement": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.FileManagement": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.OpenIddict.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Gdpr": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.AuditLogging.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Saas": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Identity.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    },
+    "Volo.Abp.Account.Pro": {
+      "version": "8.2.1",
+      "isInstalled": true
+    }
+  },
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {}
+    }
+  },
+  "packages": {
+    "Socs.Theme.Playground.Application": {
+      "path": "src/Socs.Theme.Playground.Application/Socs.Theme.Playground.Application.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.Application.Tests": {
+      "path": "test/Socs.Theme.Playground.Application.Tests/Socs.Theme.Playground.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "Socs.Theme.Playground.Domain.Shared": {
+      "path": "src/Socs.Theme.Playground.Domain.Shared/Socs.Theme.Playground.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.Application.Contracts": {
+      "path": "src/Socs.Theme.Playground.Application.Contracts/Socs.Theme.Playground.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.HttpApi": {
+      "path": "src/Socs.Theme.Playground.HttpApi/Socs.Theme.Playground.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.HttpApi.Client": {
+      "path": "src/Socs.Theme.Playground.HttpApi.Client/Socs.Theme.Playground.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.Web": {
+      "path": "src/Socs.Theme.Playground.Web/Socs.Theme.Playground.Web.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.Web.Tests": {
+      "path": "test/Socs.Theme.Playground.Web.Tests/Socs.Theme.Playground.Web.Tests.abppkg",
+      "folder": "test"
+    },
+    "Socs.Theme.Playground.EntityFrameworkCore.Tests": {
+      "path": "test/Socs.Theme.Playground.EntityFrameworkCore.Tests/Socs.Theme.Playground.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "Socs.Theme.Playground.EntityFrameworkCore": {
+      "path": "src/Socs.Theme.Playground.EntityFrameworkCore/Socs.Theme.Playground.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.TestBase": {
+      "path": "test/Socs.Theme.Playground.TestBase/Socs.Theme.Playground.TestBase.abppkg",
+      "folder": "test"
+    },
+    "Socs.Theme.Playground.Domain.Tests": {
+      "path": "test/Socs.Theme.Playground.Domain.Tests/Socs.Theme.Playground.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "Socs.Theme.Playground.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/Socs.Theme.Playground.HttpApi.Client.ConsoleTestApp/Socs.Theme.Playground.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "Socs.Theme.Playground.DbMigrator": {
+      "path": "src/Socs.Theme.Playground.DbMigrator/Socs.Theme.Playground.DbMigrator.abppkg",
+      "folder": "src"
+    },
+    "Socs.Theme.Playground.Domain": {
+      "path": "src/Socs.Theme.Playground.Domain/Socs.Theme.Playground.Domain.abppkg",
+      "folder": "src"
+    }
+  }
+}

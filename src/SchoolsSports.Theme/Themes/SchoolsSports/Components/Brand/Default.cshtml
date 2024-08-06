@@ -1,0 +1,23 @@
+﻿@using SchoolsSports.Theme
+@inject ISchoolsSportsBrandingProvider BrandingProvider
+
+<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
+    <a href="~/">
+        @if (!BrandingProvider.LogoUrl.IsNullOrWhiteSpace())
+        {
+            @if (!BrandingProvider.LogoSmallUrl.IsNullOrWhiteSpace())
+            {
+                <img src="@BrandingProvider.LogoSmallUrl" alt="@BrandingProvider.AppName" class="h-35px d-sm-none">
+            }
+            else
+            {
+                <img src="@BrandingProvider.LogoUrl" alt="@BrandingProvider.AppName" class="h-35px d-sm-none">
+            }
+            <img src="@BrandingProvider.LogoUrl" alt="@BrandingProvider.AppName" class="h-50px d-none d-sm-inline app-sidebar-logo-default theme-light-show">
+        }
+        else
+        {
+            @BrandingProvider.AppName
+        }
+    </a>
+</div>

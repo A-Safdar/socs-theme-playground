@@ -1,0 +1,57 @@
+﻿@using SchoolsSports.Theme
+@using SchoolsSports.Theme.Themes.SchoolsSports.Components.Menu
+@using SchoolsSports.Theme.Themes.SchoolsSports.Components.Toolbar
+@using SchoolsSports.Theme.Themes.SchoolsSports.Components.Toolbar.Search
+@inject ISchoolsSportsBrandingProvider BrandingProvider
+
+
+<div id="kt_app_header" class="app-header">
+    <div class="app-header-primary h-100px">
+
+        <div class="app-container  container-xxl d-flex align-items-stretch justify-content-between " id="kt_app_header_primary_container">
+            <div class="d-flex flex-stack align-items-stretch flex-grow-1 flex-lg-grow-0">
+                <div class="d-flex align-items-center me-7 w-xl-350px w-300px">
+                    <button class="d-lg-none btn btn-icon btn-color-white bg-hover-white bg-hover-opacity-10 ms-n3 me-2" id="kt_header_secondary_toggle">
+                        <i class="fa-duotone fa-bars fs-1">
+                            <span class="path1"></span><span class="path2"></span>
+                        </i>
+                    </button>
+
+                    <a href="/" class="d-flex align-items-center">
+                        <img src="@BrandingProvider.LogoUrl" alt="@BrandingProvider.AppName" class="h-50px">
+                    </a>
+                </div>
+
+                @(await Component.InvokeAsync<SearchViewComponent>())
+            </div>
+
+
+            @(await Component.InvokeAsync<HeaderToolbarViewComponent>())
+
+        </div>
+
+    </div>
+
+
+    <div class="app-header-secondary app-header-mobile-drawer" 
+         data-kt-drawer="true"
+         data-kt-drawer-name="app-header-menu" 
+         data-kt-drawer-activate="{default: true, lg: false}" 
+         data-kt-drawer-overlay="true" 
+         data-kt-drawer-width="250px" 
+         data-kt-drawer-direction="start" 
+         data-kt-drawer-toggle="#kt_header_secondary_toggle" 
+         data-kt-sticky="true" 
+         data-kt-sticky-name="app-header-secondary-sticky" 
+         data-kt-sticky-offset="{default: 'false', lg: '300px'}" 
+         data-kt-swapper="true" 
+         data-kt-swapper-mode="append" 
+         data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header'}" style="animation-duration: 0.3s;">
+
+        <!--begin::Header secondary container-->
+        <div class="app-container  container-xxl app-container-fit-mobile d-flex align-items-stretch " id="kt_app_header_secondary_container">
+            @(await Component.InvokeAsync<MenuViewComponent>())
+        </div>
+
+    </div>
+</div>

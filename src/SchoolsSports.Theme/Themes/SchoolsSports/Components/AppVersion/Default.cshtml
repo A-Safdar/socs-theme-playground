@@ -1,0 +1,11 @@
+@model SchoolsSports.Theme.Themes.SchoolsSports.Components.AppVersion.AppVersionViewModel
+v@(Model.Version) 
+@if (Model.IsAlpha)
+{
+    <span class="badge badge-danger">ALPHA @Model.SuffixVersion</span>
+}
+
+@if (Model.IsBeta)
+ {
+     <span class="badge badge-warning">BETA @Model.SuffixVersion</span>
+ }

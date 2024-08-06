@@ -1,0 +1,54 @@
+﻿@using Volo.Abp.UI.Navigation
+@model ApplicationMenuItem
+@{
+    var elementId = string.IsNullOrEmpty(Model.ElementId) ? string.Empty : $"id=\"{Model.ElementId}\"";
+    var cssClass = string.IsNullOrEmpty(Model.CssClass) ? string.Empty : Model.CssClass;
+    var disabled = Model.IsDisabled ? "disabled" : string.Empty;
+    var url = string.IsNullOrEmpty(Model.Url) ? "#" : Url.IsLocalUrl(Model.Url) ? Url.Content(Model.Url.EnsureStartsWith('~')) : Model.Url;
+}
+@if (Model.IsLeaf)
+{
+    if (Model.Url != null)
+    {
+        <div class="menu-item @cssClass @disabled">
+            <!--begin:Menu link-->
+            <a class="menu-link" href="@url" target="@Model.Target" @Html.Raw(elementId)>
+                @if (!Model.Icon.IsNullOrEmpty() && Model.Icon.StartsWith("fa"))
+                {
+                    <span class="menu-icon">
+                        <i class="@Model.Icon fs-2">
+                        </i>
+                    </span>
+                }
+
+                <span class="menu-title">
+                    @Model.DisplayName
+                </span>
+            </a>
+        </div>
+    }
+}
+else
+{
+    <div class="menu-item @cssClass @disabled">
+        <a role="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+            @if (!Model.Icon.IsNullOrEmpty() && Model.Icon.StartsWith("fa"))
+            {
+                <span class="menu-icon">
+                    <i class="@Model.Icon fs-2">
+                    </i>
+                </span>
+            }
+            <span class="menu-title">
+                @Model.DisplayName
+            </span>
+        </a>
+        <div class="dropdown-menu border-0 shadow-sm">
+            @foreach (var childMenuItem in Model.Items)
+            {
+                @await Html.PartialAsync("~/Themes/SchoolsSports/Components/Menu/_MenuItem.cshtml", childMenuItem)
+            }
+        </div>
+    </div>
+}

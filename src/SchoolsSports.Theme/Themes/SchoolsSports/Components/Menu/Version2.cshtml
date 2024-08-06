@@ -1,0 +1,142 @@
+﻿@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@model Volo.Abp.UI.Navigation.ApplicationMenu
+@inject IPageLayout PageLayout
+
+<!--begin::Menu wrapper-->
+<div class="header-menu d-flex align-items-stretch w-100">
+    <!--begin::Menu-->
+    <div class="w-250px w-xl-100 menu menu-lg-rounded menu-column menu-lg-row menu-state-bg menu-state-primary menu-title-gray-700 menu-arrow-gray-500 menu-bullet-gray-500 fw-semibold my-5 my-lg-0 align-items-stretch" id="#kt_header_menu" data-kt-menu="true">
+
+
+        @foreach (var menuItem in Model.Items)
+        {
+            var elementId = string.IsNullOrEmpty(menuItem.ElementId) ? string.Empty : $"id='{menuItem.ElementId}'";
+            var cssClass = string.IsNullOrEmpty(menuItem.CssClass) ? string.Empty : menuItem.CssClass;
+            var disabled = menuItem.IsDisabled ? "disabled" : string.Empty;
+            var here = menuItem.Name == PageLayout.Content.MenuItemName ? "here" : string.Empty;
+            var url = string.IsNullOrEmpty(menuItem.Url) ? "#" : Url.IsLocalUrl(menuItem.Url) ? Url.Content(menuItem.Url.EnsureStartsWith('~')) : menuItem.Url;
+            var tagLine = menuItem.CustomData.GetValueOrDefault("tagline")?.ToString();
+            var comingSoon = menuItem.CustomData.GetValueOrDefault("comingsoon")?.ToString() == "True";
+            if (menuItem.IsLeaf)
+            {
+                if (menuItem.Url != null)
+                {
+                    <a class="menu-item menu-here-bg me-0 me-lg-2 text-center  @cssClass @disabled @here" @elementId href="@url" target="@menuItem.Target">
+
+                        @if (comingSoon)
+                        {
+                            <span class="badge badge-warning fs-9">coming soon</span>
+                        }
+
+                        <span class="menu-link py-3">
+                            <span class="menu-title">
+                                <span class="menu-text text-dark w-100">
+                                    @menuItem.DisplayName
+                                </span>
+                                @if (!tagLine.IsNullOrEmpty())
+                                {
+                                    <span class="menu-desc w-100">
+                                        @tagLine
+                                    </span>
+                                }
+                            </span>
+                        </span>
+                    </a>
+                }
+            }
+            else
+            {
+                <div
+                    data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
+                    data-kt-menu-placement="bottom-start"
+                    class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2  @cssClass @disabled @here"
+                    @elementId>
+                    <span class="menu-link py-3">
+                        <span class="menu-title">
+                            <span class="menu-text"> @menuItem.DisplayName</span>
+                            @if (!tagLine.IsNullOrEmpty())
+                            {
+                                <span class="menu-desc w-100">
+                                    @tagLine
+                                </span>
+                            }
+                        </span>
+                        <span class="menu-arrow d-lg-none"></span>
+                    </span>
+                    <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown px-lg-2 py-lg-4 w-lg-250px">
+
+                        @foreach (var subMenuItem in menuItem.Items)
+                        {
+                            var subUrl = string.IsNullOrEmpty(subMenuItem.Url) ? "#" : Url.IsLocalUrl(subMenuItem.Url) ? Url.Content(subMenuItem.Url.EnsureStartsWith('~')) : subMenuItem.Url;
+
+                            @if (subMenuItem.IsLeaf)
+                            {
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link py-3" href="@subUrl">
+                                        <span class="menu-icon">
+                                            <i class="fa-duotone fa-calendar-8 fs-2">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                                <span class="path3"></span>
+                                                <span class="path4"></span>
+                                                <span class="path5"></span>
+                                                <span class="path6"></span>
+                                            </i>
+                                        </span>
+                                        <span class="menu-title">@subMenuItem.DisplayName</span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                            }
+                            else
+                            {
+                                <div data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-placement="right-start" class="menu-item menu-lg-down-accordion">
+                                    <!--begin:Menu link-->
+                                    <span class="menu-link py-3">
+                                        <span class="menu-icon">
+                                            <i class="fa-duotone fa-rocket fs-2">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
+                                        </span>
+                                        <span class="menu-title">@subMenuItem.DisplayName</span>
+                                        <span class="menu-arrow"></span>
+                                    </span>
+                                    <!--end:Menu link-->
+                                    <!--begin:Menu sub-->
+                                    <div class="menu-sub menu-sub-lg-down-accordion menu-sub-lg-dropdown menu-active-bg px-lg-2 py-lg-4 w-lg-225px">
+
+                                        @foreach (var subSubMenuItem in subMenuItem.Items)
+                                        {
+                                            var subSubUrl = string.IsNullOrEmpty(subSubMenuItem.Url) ? "#" : Url.IsLocalUrl(subSubMenuItem.Url) ? Url.Content(subSubMenuItem.Url.EnsureStartsWith('~')) : subSubMenuItem.Url;
+
+                                            <div class="menu-item">
+                                                <!--begin:Menu link-->
+                                                <a class="menu-link py-3" href="@subSubUrl">
+                                                    <span class="menu-icon">
+                                                        <i class="fa-duotone fa-calendar-8 fs-2">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                            <span class="path4"></span>
+                                                            <span class="path5"></span>
+                                                            <span class="path6"></span>
+                                                        </i>
+                                                    </span>
+                                                    <span class="menu-title">@subSubMenuItem.DisplayName</span>
+                                                </a>
+                                                <!--end:Menu link-->
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

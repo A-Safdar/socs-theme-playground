@@ -1,0 +1,10 @@
+﻿{
+  "applications": {
+    "Socs.Theme.Playground.Web": {
+      "type": "dotnet-project",
+      "launchUrl": "https://localhost:44319",
+      "path": "../../../src/Socs.Theme.Playground.Web/Socs.Theme.Playground.Web.csproj",
+      "kubernetesService": ".*-web$"
+    }
+  }
+}
